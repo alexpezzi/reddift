@@ -25,7 +25,7 @@ public func extendAllReplies(in comment: Thing, current depth: Int) -> ([(Thing,
         }
     } else if let more = comment as? More {
         for id in more.children {
-            let more = More(id: id, name: "t1_\(id)", parentId: more.parentId, child: id)
+            let more = More(id: id, name: "t1_\(id)", parentId: more.parentId, depth: depth, child: id)
             buf.append((more, depth))
         }
     }
