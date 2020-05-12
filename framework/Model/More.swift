@@ -23,6 +23,7 @@ public struct More: Thing {
     
     public let parentId: String
     public let count: Int
+	public let depth: Int
 	public let children: [String]
 	
     public init(id: String) {
@@ -30,6 +31,7 @@ public struct More: Thing {
         self.name = "\(More.kind)_\(self.id)"
         parentId = ""
         count = 0
+		depth = 0
         children = []
     }
     
@@ -44,14 +46,16 @@ public struct More: Thing {
         name = data["name"] as? String ?? ""
         parentId = data["parent_id"] as? String ?? ""
         count = data["count"] as? Int ?? 0
+		depth = data["depth"] as? Int ?? 0
         children = data["children"] as? [String] ?? []
     }
     
-    public init(id: String, name: String, parentId: String, count: Int = 0, child: String) {
+	public init(id: String, name: String, parentId: String, count: Int = 0, depth: Int, child: String) {
         self.id = id
         self.name = name
         self.parentId = parentId
         self.count = count
+		self.depth = depth
         self.children = [child]
     }
     
